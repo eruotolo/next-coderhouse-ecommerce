@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MaterialThemeProjectNewConfig">
+    <option name="metadata">
+      <MTProjectMetadataState>
+        <option name="userId" value="2d6c68dd:18fcb4f700e:-7ffa" />
+      </MTProjectMetadataState>
+    </option>
+  </component>
+  <component name="PrettierConfiguration">
+    <option name="myConfigurationMode" value="MANUAL" />
+    <option name="myRunOnSave" value="true" />
+    <option name="myRunOnReformat" value="true" />
+  </component>
+</project>

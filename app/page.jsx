@@ -22,7 +22,7 @@ export default function Home() {
                     />
                 </div>
                 <div className="container mx-auto py-[30px] max-w-[1200px]">
-                    <Link href="/infantil">
+                    <Link href="/shop/infantil">
                         <Image
                             src={infantil}
                             alt={'Infantil'}
@@ -34,7 +34,7 @@ export default function Home() {
                 </div>
                 <div className="container mx-auto max-w-[1200px]">
                     <div className="flex flex-row justify-between">
-                        <Link href="/hombres" className="relative group">
+                        <Link href="/shop/hombres" className="relative group">
                             <Image
                                 src={hombres}
                                 alt={'hombres'}
@@ -46,7 +46,7 @@ export default function Home() {
                                 <span className="text-white text-[26px]">HOMBRES</span>
                             </div>
                         </Link>
-                        <Link href="/mujeres" className="relative group">
+                        <Link href="/shop/mujeres" className="relative group">
                             <Image
                                 src={mujeres}
                                 alt={'hombres'}
@@ -58,7 +58,7 @@ export default function Home() {
                                 <span className="text-white text-[26px]">MUJERES</span>
                             </div>
                         </Link>
-                        <Link href="/outlet" className="relative group">
+                        <Link href="/shop/outlet" className="relative group">
                             <Image
                                 src={outlet}
                                 alt={'hombres'}

@@ -4,16 +4,22 @@ import { Suspense } from 'react';
 import Loading from '@/app/components/Loading/Loading';
 import Link from 'next/link';
 import Image from 'next/image';
-import HeaderPage from '@/app/components/HeaderPage/HeaderPage';
 
 export default function ShopHombre() {
-    const filteredProducts = products.filter((product) => product.customertype === 'mujeres');
-    const headerMujeres = '/header-mujeres.webp';
-    const titlePage = 'Productos de dama';
+    const filteredProducts = products.filter((product) => product.customertype === 'infantil');
+    const headerHombres = '/header-hombres.webp';
+
     return (
         <div className="container mx-auto max-w-[1200px]">
-            <HeaderPage titlePage={titlePage} imgHeader={headerMujeres} />
-
+            <div className="flex flex-col">
+                <Image
+                    src={headerHombres}
+                    alt={'cabezal'}
+                    width={1160}
+                    height={200}
+                    className="w-full"
+                />
+            </div>
             <Suspense fallback={<Loading />}>
                 {filteredProducts.length === 0 ? (
                     <div className="container mx-auto flex flex-col justify-center items-center h-[65vh]">

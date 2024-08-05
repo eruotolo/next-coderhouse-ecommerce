@@ -94,7 +94,7 @@ export default function NavBar() {
             >
                 <ul className="flex md:flex-row items-center justify-between">
                     <li className="relative group pl-[10px] pr-[10px] font-[600] text-[14px] leading-[50px] uppercase cursor-pointer flex text-[#172983] hover:text-[#8e99d1]">
-                        <Link href="/hombres" className="flex">
+                        <Link href="/shop/hombres" className="flex">
                             HOMBRES
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -116,24 +116,24 @@ export default function NavBar() {
                                 <li
                                     key={category}
                                     className={`pl-[10px] pr-[10px] font-[600] text-[14px] leading-[50px] uppercase cursor-pointer flex ${
-                                        pathname === `/hombres/${category}`
+                                        pathname === `/shop/hombres/${category}`
                                             ? 'text-[#8e99d1]'
                                             : 'text-[#172983] hover:text-[#8e99d1]'
                                     }`}
                                 >
-                                    <Link href={`/hombres/${category}`}>{category}</Link>
+                                    <Link href={`/shop/hombres/${category}`}>{category}</Link>
                                 </li>
                             ))}
                         </ul>
                     </li>
                     <li
                         className={`pl-[10px] pr-[10px] font-[600] text-[14px] leading-[50px] uppercase cursor-pointer ${
-                            pathname === '/mujeres'
+                            pathname === '/shop/mujeres'
                                 ? 'text-[#8e99d1]'
                                 : 'text-[#172983] hover:text-[#8e99d1]'
                         }`}
                     >
-                        <Link href="/mujeres">MUJERES</Link>
+                        <Link href="/shop/mujeres">MUJERES</Link>
                     </li>
                     <li
                         className={`pl-[10px] pr-[10px] font-[600] text-[14px] leading-[50px] uppercase cursor-pointer ${
@@ -142,7 +142,7 @@ export default function NavBar() {
                                 : 'text-[#172983] hover:text-[#8e99d1]'
                         }`}
                     >
-                        <Link href="/accesorios">ACCESORIOS</Link>
+                        <Link href="/shop/accesorios">ACCESORIOS</Link>
                     </li>
                     <li
                         className={`pl-[10px] pr-[10px] font-[600] text-[14px] leading-[50px] uppercase cursor-pointer ${
@@ -151,7 +151,7 @@ export default function NavBar() {
                                 : 'text-[#d23232] hover:text-[#8e99d1]'
                         }`}
                     >
-                        <Link href="/sale">SALE</Link>
+                        <Link href="/shop/sale">SALE</Link>
                     </li>
                     <li
                         className={`pl-[10px] pr-[10px] font-[600] text-[14px] leading-[50px] uppercase cursor-pointer ${
@@ -160,7 +160,7 @@ export default function NavBar() {
                                 : 'text-[#d23232] hover:text-[#8e99d1]'
                         }`}
                     >
-                        <Link href="/outlet">OUTLET</Link>
+                        <Link href="/shop/outlet">OUTLET</Link>
                     </li>
                 </ul>
             </div>

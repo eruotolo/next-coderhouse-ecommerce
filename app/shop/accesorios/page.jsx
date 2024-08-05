@@ -3,12 +3,18 @@ import ProductList from '@/app/components/ProductList/ProductList';
 import { Suspense } from 'react';
 import Loading from '@/app/components/Loading/Loading';
 import Link from 'next/link';
+import Image from 'next/image';
+import HeaderPage from '@/app/components/HeaderPage/HeaderPage';
 
 export default function ShopAccesorios() {
     const filteredProducts = products.filter((product) => product.customertype === 'accesorios');
+    const headerAccesorios = '/header-accesorios.webp';
+    const titlePage = 'Accesorios';
 
     return (
         <div className="container mx-auto max-w-[1200px]">
+            <HeaderPage titlePage={titlePage} imgHeader={headerAccesorios} />
+
             <Suspense fallback={<Loading />}>
                 {filteredProducts.length === 0 ? (
                     <div className="container mx-auto flex flex-col justify-center items-center h-[65vh]">

@@ -4,22 +4,17 @@ import { Suspense } from 'react';
 import Loading from '@/app/components/Loading/Loading';
 import Link from 'next/link';
 import Image from 'next/image';
+import HeaderPage from '@/app/components/HeaderPage/HeaderPage';
 
 export default function ShopHombre() {
     const filteredProducts = products.filter((product) => product.customertype === 'hombres');
     const headerHombres = '/header-hombres.webp';
+    const titlePage = 'Productos de Hombre';
 
     return (
         <div className="container mx-auto max-w-[1200px]">
-            <div className="flex flex-col">
-                <Image
-                    src={headerHombres}
-                    alt={'cabezal'}
-                    width={1160}
-                    height={200}
-                    className="w-full"
-                />
-            </div>
+            <HeaderPage titlePage={titlePage} imgHeader={headerHombres} />
+
             <Suspense fallback={<Loading />}>
                 {filteredProducts.length === 0 ? (
                     <div className="container mx-auto flex flex-col justify-center items-center h-[65vh]">

@@ -24,7 +24,7 @@ export default function NavBar() {
     const hombresCategories = getUniqueCategoriesByType('hombres');
 
     return (
-        <header className="h-[121px]">
+        <header className="h-[121px] border-b-[1px] border-[#EDEDED]">
             <div className="container mx-auto max-w-[1200px]">
                 <div className="flex items-center justify-between border-b-[1px] border-[#172983] h-[70px]">
                     <div className="w-2/12 hidden md:flex">

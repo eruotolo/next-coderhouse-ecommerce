@@ -2,17 +2,17 @@
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import CardWidget from '@/app/components/CardWidget/CardWidget';
-
-import { getUniqueCategoriesByType } from '@/data/mockData';
-
 import Link from 'next/link';
 import Image from 'next/image';
+import { db } from '@/app/config/firebase';
+import { collection, getDocs } from 'firebase/firestore';
 
 export default function NavBar() {
     const logo = '/logo.svg';
     const pathname = usePathname();
     const [state, setState] = useState(false);
-    const [isOpen, setIsOpen] = useState(false);
+    const [categories, setCategories] = useState([]);
+    const [catehombres, setCatehombres] = useState([]);
 
     useEffect(() => {
         document.onclick = (e) => {
@@ -21,7 +21,9 @@ export default function NavBar() {
         };
     }, []);
 
-    const hombresCategories = getUniqueCategoriesByType('hombres');
+    const categoryHombres = ['chaquetas', 'pantalones', 'camisetas'];
+
+    // Aqui me gustaria hacer un array donde obtenga todas las category del custometype='hombres'
 
     return (
         <header className="h-[121px] border-b-[1px] border-[#EDEDED]">
@@ -112,7 +114,7 @@ export default function NavBar() {
                             </svg>
                         </Link>
                         <ul className="absolute hidden group-hover:block bg-[#FFFFFF] min-w-[160px] p-[16px] z-10 mt-[40px] border-[#ededed] border-[1px]">
-                            {hombresCategories.map((category) => (
+                            {categoryHombres.map((category) => (
                                 <li
                                     key={category}
                                     className={`pl-[10px] pr-[10px] font-[600] text-[14px] leading-[50px] uppercase cursor-pointer flex ${

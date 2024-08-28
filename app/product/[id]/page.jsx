@@ -1,16 +1,40 @@
 'use client';
 
-import { products } from '@/data/mockData';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import QuantityButton from '@/app/components/QuantityButton/QuantityButton';
 
 export default function ItemDetail() {
     const [isOpen, setIsOpen] = useState(false);
-    const { id } = useParams();
-    const itemDetail = products.find((product) => product.id == id);
+    const { category, slug } = useParams();
+    const [itemDetail, setItemDetail] = useState(null);
+
+    useEffect(() => {
+        async function fetchProduct() {
+            try {
+                const response = await fetch(`/api/products/${category}/${slug}`);
+                const data = await response.json();
+                if (response.ok) {
+                    setItemDetail(data);
+                } else {
+                    console.error('Error fetching product:', data.error);
+                }
+            } catch (error) {
+                console.error('Failed to fetch product:', error);
+            }
+        }
+
+        if (category && slug) {
+            fetchProduct();
+        }
+    }, [category, slug]);
+
+    if (!itemDetail) {
+        return <div>Loading...</div>;
+    }
+
     return (
         <div className="grid grid-cols-2 mt-[60px]">
             <div className="col-span-1 flex justify-end">

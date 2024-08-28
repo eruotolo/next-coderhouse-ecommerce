@@ -1,13 +1,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function ProductCard({ nombre, precio, img, id, category }) {
+export default function ProductCard({ nombre, precio, img, id }) {
     const bbva = '/bbva.webp';
 
     return (
         <div className="flex flex-col bg-white max-w-md mx-auto w-[270px] mb-[40px]">
             <div className="flex-shrink-0">
-                <Link href={`/product/${id}`}>
+                <Link href={`/product/${nombre}`}>
                     <Image
                         src={img}
                         alt={'Imagen de Producto'}
@@ -18,7 +18,7 @@ export default function ProductCard({ nombre, precio, img, id, category }) {
                 </Link>
             </div>
             <div className="pt-2">
-                <Link href={`/product/${id}`}>
+                <Link href={`/product/${nombre}`}>
                     <h1 className="text-[14px] font-[700] leading-[20px] text-left cursor-pointer h-[36px]">
                         {nombre}
                     </h1>

@@ -1,6 +1,6 @@
 'use client';
 
-import { products } from '@/data/mockData';
+import { products } from '@/data/mockData.js';
 import ProductList from '@/app/components/ProductList/ProductList';
 import { Suspense } from 'react';
 import Loading from '@/app/components/Loading/Loading';

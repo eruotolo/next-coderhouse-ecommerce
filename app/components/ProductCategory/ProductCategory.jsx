@@ -7,7 +7,7 @@ import ProductCard from '@/app/components/ProductCard/ProductCard';
 import Loading from '@/app/components/Loading/Loading';
 import Link from 'next/link';
 
-export default function ProductList({ customertype }) {
+export default function ProductCategory({ category }) {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -15,12 +15,12 @@ export default function ProductList({ customertype }) {
         const fetchProducts = async () => {
             try {
                 const productsCollection = collection(db, 'products');
-                const q = customertype
-                    ? query(productsCollection, where('customertype', '==', customertype))
+                const q = category
+                    ? query(productsCollection, where('category', '==', category))
                     : productsCollection;
                 const productsSnapshot = await getDocs(q);
                 const productsList = productsSnapshot.docs.map((doc) => ({
-                    id: doc.id,
+                    id: doc.id, // Include the id from Firestore
                     ...doc.data(),
                 }));
                 setProducts(productsList);
@@ -32,7 +32,7 @@ export default function ProductList({ customertype }) {
         };
 
         fetchProducts();
-    }, [customertype]);
+    }, [category]);
 
     if (loading) {
         return <Loading />;

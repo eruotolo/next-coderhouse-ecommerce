@@ -1,28 +1,22 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { db } from '@/app/config/firebase.js';
-import { collection, query, where, getDocs } from 'firebase/firestore';
 import ProductCard from '@/app/components/ProductCard/ProductCard';
 import Loading from '@/app/components/Loading/Loading';
 import Link from 'next/link';
 
-export default function ProductList({ customertype }) {
+export default function ProductGeneral() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const productsCollection = collection(db, 'products');
-                const q = customertype
-                    ? query(productsCollection, where('customertype', '==', customertype))
-                    : productsCollection;
-                const productsSnapshot = await getDocs(q);
-                const productsList = productsSnapshot.docs.map((doc) => ({
-                    id: doc.id,
-                    ...doc.data(),
-                }));
+                const response = await fetch('/api/products');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const productsList = await response.json();
                 setProducts(productsList);
             } catch (error) {
                 console.error('Failed to fetch products:', error);
@@ -32,7 +26,7 @@ export default function ProductList({ customertype }) {
         };
 
         fetchProducts();
-    }, [customertype]);
+    }, []);
 
     if (loading) {
         return <Loading />;

@@ -1,24 +1,48 @@
 'use client';
 
-import { products } from '@/data/mockData';
-import ProductList from '@/app/components/ProductList/ProductList';
+import { useState, useEffect } from 'react';
+import ProductCategory from '@/app/components/ProductCategory/ProductCategory';
 import { Suspense } from 'react';
 import Loading from '@/app/components/Loading/Loading';
 import { useParams } from 'next/navigation';
+import HeaderPage from '@/app/components/HeaderPage/HeaderPage';
 
-export default function Nombre() {
+export default function ShopHombreCategory() {
     const { category } = useParams();
-    const filterData = products.filter((item) => {
-        const categoryMatch =
-            category === 'all' || item.category.toLowerCase() === category.toLowerCase();
-        const customertypeMatch = item.customertype === 'hombres';
-        return categoryMatch && customertypeMatch;
-    });
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const response = await fetch(`/api/products/${category}`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const productsList = await response.json();
+                setProducts(productsList);
+            } catch (error) {
+                console.error('Failed to fetch products:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchProducts();
+    }, [category]);
+
+    if (loading) {
+        return <Loading />;
+    }
 
     return (
         <div className="container mx-auto max-w-[1200px]">
+            <HeaderPage
+                titlePage={`Productos de Hombre - ${category}`}
+                imgHeader="/header-hombres.webp"
+            />
             <Suspense fallback={<Loading />}>
-                <ProductList category={category} products={filterData} />
+                <ProductCategory category={category} products={products} />
             </Suspense>
         </div>
     );

@@ -111,7 +111,7 @@ export const products = [
     },
     {
         id: 12,
-        nombre: 'CAMISA POLANCO OLARIA - AZU CEL',
+        nombre: 'CAMISA POLANCO OLARIA - AZUL',
         precio: 2290,
         category: 'camisetas',
         stock: 5,

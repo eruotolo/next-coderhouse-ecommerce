@@ -11,8 +11,6 @@ export default function NavBar() {
     const logo = '/logo.svg';
     const pathname = usePathname();
     const [state, setState] = useState(false);
-    const [categories, setCategories] = useState([]);
-    const [catehombres, setCatehombres] = useState([]);
 
     useEffect(() => {
         document.onclick = (e) => {
@@ -22,8 +20,6 @@ export default function NavBar() {
     }, []);
 
     const categoryHombres = ['chaquetas', 'pantalones', 'camisetas'];
-
-    // Aqui me gustaria hacer un array donde obtenga todas las category del custometype='hombres'
 
     return (
         <header className="h-[121px] border-b-[1px] border-[#EDEDED]">
